@@ -1,1 +1,3 @@
-console.log('testuj');
+/* global variables */
+let computerMove = 'kamień';
+let playerMove = 'papier';
