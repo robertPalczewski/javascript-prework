@@ -1,52 +1,27 @@
-/*
-let randomNumber = Math.floor(Math.random() * 3 + 1);
-console.log('Wylosowana liczba to: ' + randomNumber);
-let computerMove = 'nieznany ruch';
-if (randomNumber === 1) {
-    computerMove = 'kamień';
-} else if (randomNumber === 2) {
-    computerMove = 'papier';
-} else if (randomNumber === 3) {
-    computerMove = 'nożyce';
-}*/
-let randomNumber = Math.floor(Math.random() * 3);
-console.log('Wylosowana liczba to: ' + randomNumber);
-let computerMove = ['kamień', 'papier', 'nożyce'];
-printMessage('Mój ruch to: ' + computerMove[randomNumber]);
-
-let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
-console.log('wybrany ruch to: ' + playerInput);
-
-if (playerInput !== '1' && playerInput !== '2' && playerInput !== '3') {
-    while (playerInput !== '1' && playerInput !== '2' && playerInput !== '3') {
-        playerInput = prompt('Wybierz liczbę całkowitą z zakresu 1-3! 1: kamień, 2: papier, 3: nożyce.');
-        console.log(playerInput);
+const moveName = ['kamień', 'papier', 'nożyce'];
+const input = ['1', '2', '3'];
+const computerMove = moveName[Math.floor(Math.random() * 3)];
+let playerInput = prompt('Wybierz swój ruch! 1: ' + moveName[0] + ', 2:  ' + moveName[1] + ', 3:  ' + moveName[2] + '.');
+console.log('wybrany ruch gracza to: ' + playerInput);
+const playerMoveInput = playerInput => {
+    while (input.indexOf(playerInput) === -1) {
+        playerInput = prompt('Musisz wybrać liczbę całkowitą z zakresu 1-3! 1: ' + moveName[0] + ', 2:  ' + moveName[1] + ', 3:  ' + moveName[2] + '.');
+        console.log('poprawiony ruch gracza to: ' + playerInput);
     }
-}
-let playerMove = 'nieznany ruch';
-if (playerInput === '1') {
-    playerMove = 'kamień';
-} else if (playerInput === '2') {
-    playerMove = 'papier';
-} else if (playerInput === '3') {
-    playerMove = 'nożyce';
-}
+    return moveName[playerInput - 1];
+};
+const playerMove = playerMoveInput(playerInput);
+printMessage('Mój ruch to: ' + computerMove);
 printMessage('Twój ruch to: ' + playerMove);
 
-if (computerMove === 'kamień' && playerMove === 'papier') {
+if (computerMove === moveName[0] && playerMove === moveName[1]) {
     printMessage('Ty wygrywasz!');
-} else if (computerMove === 'kamień' && playerMove === 'nożyce') {
-    printMessage('Ja wygrywam!');
-} else if (computerMove === 'papier' && playerMove === 'kamień') {
-    printMessage('Ja wygrywam!');
-} else if (computerMove === 'papier' && playerMove === 'nożyce') {
+} else if (computerMove === moveName[1] && playerMove === moveName[2]) {
     printMessage('Ty wygrywasz!');
-} else if (computerMove === 'nożyce' && playerMove === 'kamień') {
+} else if (computerMove === moveName[2] && playerMove === moveName[0]) {
     printMessage('Ty wygrywasz!');
-} else if (computerMove === 'nożyce' && playerMove === 'papier') {
-    printMessage('Ja wygrywam!');
-} else {
+} else if (computerMove === playerMove) {
     printMessage('Mamy remis!');
+} else {
+    printMessage('Ja wygrywam!');
 }
-
-
