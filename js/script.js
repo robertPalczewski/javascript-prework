@@ -13,12 +13,7 @@ const playerMoveInput = playerInput => {
 const playerMove = playerMoveInput(playerInput);
 printMessage('Mój ruch to: ' + computerMove);
 printMessage('Twój ruch to: ' + playerMove);
-
-if (computerMove === moveName[0] && playerMove === moveName[1]) {
-    printMessage('Ty wygrywasz!');
-} else if (computerMove === moveName[1] && playerMove === moveName[2]) {
-    printMessage('Ty wygrywasz!');
-} else if (computerMove === moveName[2] && playerMove === moveName[0]) {
+if ((computerMove === moveName[0] && playerMove === moveName[1]) || (computerMove === moveName[1] && playerMove === moveName[2]) || (computerMove === moveName[2] && playerMove === moveName[0])) {
     printMessage('Ty wygrywasz!');
 } else if (computerMove === playerMove) {
     printMessage('Mamy remis!');
