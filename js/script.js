@@ -11,12 +11,15 @@ const playerMoveInput = playerInput => {
     return moveName[playerInput - 1];
 };
 const playerMove = playerMoveInput(playerInput);
-printMessage('Mój ruch to: ' + computerMove);
-printMessage('Twój ruch to: ' + playerMove);
-if ((computerMove === moveName[0] && playerMove === moveName[1]) || (computerMove === moveName[1] && playerMove === moveName[2]) || (computerMove === moveName[2] && playerMove === moveName[0])) {
-    printMessage('Ty wygrywasz!');
-} else if (computerMove === playerMove) {
-    printMessage('Mamy remis!');
-} else {
-    printMessage('Ja wygrywam!');
-}
+const displayResult = (argComputerMove, argPlayerMove) => {
+    printMessage('Mój ruch to: ' + argComputerMove);
+    printMessage('Twój ruch to: ' + argPlayerMove);
+    if ((computerMove === moveName[0] && argPlayerMove === moveName[1]) || (argComputerMove === moveName[1] && argPlayerMove === moveName[2]) || (argComputerMove === moveName[2] && argPlayerMove === moveName[0])) {
+        printMessage('Ty wygrywasz!');
+    } else if (argComputerMove === argPlayerMove) {
+        printMessage('Mamy remis!');
+    } else {
+        printMessage('Ja wygrywam!');
+    }
+};
+displayResult(computerMove, playerMove);
