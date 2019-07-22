@@ -1,18 +1,19 @@
 function playGame(playerInput) {
     clearMessages();
     const moveName = ['kamień', 'papier', 'nożyce'];
-    const input = ['1', '2', '3'];
+    // const input = ['1', '2', '3'];
     const computerMove = moveName[Math.floor(Math.random() * 3)];
-    // let playerInput = prompt('Wybierz swój ruch! 1: ' + moveName[0] + ', 2:  ' + moveName[1] + ', 3:  ' + moveName[2] + '.');
+    /* let playerInput = prompt('Wybierz swój ruch! 1: ' + moveName[0] + ', 2:  ' + moveName[1] + ', 3:  ' + moveName[2] + '.');
     console.log('wybrany ruch gracza to: ' + playerInput);
     const playerMoveInput = playerInput => {
         while (input.indexOf(playerInput.toString()) === -1) {
             playerInput = prompt('Musisz wybrać liczbę całkowitą z zakresu 1-3! 1: ' + moveName[0] + ', 2:  ' + moveName[1] + ', 3:  ' + moveName[2] + '.');
-            console.log('poprawiony ruch gracza to: ' + playerInput);
+             console.log('poprawiony ruch gracza to: ' + playerInput);
         }
         return moveName[playerInput - 1];
-    };
-    const playerMove = playerMoveInput(playerInput);
+    }; */
+    // const playerMove = playerMoveInput(playerInput);
+    const playerMove = moveName[playerInput];
     const displayResult = (argComputerMove, argPlayerMove) => {
         printMessage('Mój ruch to: ' + argComputerMove);
         printMessage('Twój ruch to: ' + argPlayerMove);
@@ -26,3 +27,13 @@ function playGame(playerInput) {
     };
     displayResult(computerMove, playerMove);
 }
+
+document.getElementById('play-rock').addEventListener('click', function () {
+    printMessage(playGame(0));
+});
+document.getElementById('play-paper').addEventListener('click', function () {
+    printMessage(playGame(1));
+});
+document.getElementById('play-scissors').addEventListener('click', function () {
+    printMessage(playGame(2));
+});
