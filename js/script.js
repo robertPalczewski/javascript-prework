@@ -29,11 +29,11 @@ function playGame(playerInput) {
 }
 
 document.getElementById('play-rock').addEventListener('click', function () {
-    printMessage(playGame(0));
+    playGame(0);
 });
 document.getElementById('play-paper').addEventListener('click', function () {
-    printMessage(playGame(1));
+    playGame(1);
 });
 document.getElementById('play-scissors').addEventListener('click', function () {
-    printMessage(playGame(2));
+    playGame(2);
 });
