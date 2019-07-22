@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Kamień, papier, nożyce</title>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <div id="buttons"></div>
+<div class="container col-12 my-5">
+    <div class="col-6 row justify-content-around" id="buttons">
+        <button class="col-2" id="play-rock" title="Kamień"><i class="fas fa-hand-rock"></i></button>
+        <button class="col-2" id="play-paper" title="Papier"><i class="fas fa-hand-paper"></i></button>
+        <button class="col-2" id="play-scissors" title="Nożyce"><i class="fas fa-hand-scissors"></i></button>
+    </div>
     <div id="messages"></div>
 </div>
 <script src="js/functions.js"></script>

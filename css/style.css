@@ -1,0 +1,19 @@
+/* line 1, sass/style.scss */
+#buttons button i {
+    font-size: 36px;
+    line-height: 36px;
+    padding: 8px;
+}
+
+/* line 6, sass/style.scss */
+#buttons button i:hover {
+    color: forestgreen;
+}
+
+/* line 15, sass/style.scss */
+#buttons {
+    text-align: center;
+    margin: auto;
+}
+
+/*# sourceMappingURL=style.css.map */

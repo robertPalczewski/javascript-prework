@@ -1,0 +1,18 @@
+#buttons button i {
+  font-size: 36px;
+  line-height: 36px;
+  padding: 8px;
+
+  &:hover {
+    color: forestgreen;
+  }
+}
+
+.container {
+
+}
+
+#buttons {
+  text-align: center;
+  margin: auto;
+}
