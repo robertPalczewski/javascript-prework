@@ -1,26 +1,31 @@
 let computerWins = 0;
 let playerWins = 0;
-let round = 0;
-function playGame(playerInput) {
+let rounds = 0;
+let computerWinsEffectiveness = 0;
+
+function playGame(argPlayerInput) {
+    let playerInput = argPlayerInput;
     clearMessages();
     const moveName = ['kamień', 'papier', 'nożyce'];
-    // const input = ['1', '2', '3'];
-    const computerMove = moveName[Math.floor(Math.random() * 3)];
-    /* let playerInput = prompt('Wybierz swój ruch! 1: ' + moveName[0] + ', 2:  ' + moveName[1] + ', 3:  ' + moveName[2] + '.');
-    console.log('wybrany ruch gracza to: ' + playerInput);
-    const playerMoveInput = playerInput => {
-        while (input.indexOf(playerInput.toString()) === -1) {
-            playerInput = prompt('Musisz wybrać liczbę całkowitą z zakresu 1-3! 1: ' + moveName[0] + ', 2:  ' + moveName[1] + ', 3:  ' + moveName[2] + '.');
-             console.log('poprawiony ruch gracza to: ' + playerInput);
+    let playerMove = moveName[playerInput];
+    let computerMove = playerInput => {
+        if ((computerWins / playerWins) > 0.25) {
+            switch (playerInput) {
+                case 0:
+                    return moveName[2];
+                case 1:
+                    return moveName[0];
+                case 2:
+                    return moveName[1];
+            }
+        } else {
+            return moveName[Math.floor(Math.random() * 3)];
         }
-        return moveName[playerInput - 1];
-    }; */
-    // const playerMove = playerMoveInput(playerInput);
-    const playerMove = moveName[playerInput];
+    };
     const displayResult = (argComputerMove, argPlayerMove) => {
         printMessage('Mój ruch to: ' + argComputerMove);
         printMessage('Twój ruch to: ' + argPlayerMove);
-        if ((computerMove === moveName[0] && argPlayerMove === moveName[1]) || (argComputerMove === moveName[1] && argPlayerMove === moveName[2]) || (argComputerMove === moveName[2] && argPlayerMove === moveName[0])) {
+        if ((argComputerMove === moveName[0] && argPlayerMove === moveName[1]) || (argComputerMove === moveName[1] && argPlayerMove === moveName[2]) || (argComputerMove === moveName[2] && argPlayerMove === moveName[0])) {
             printMessage('Ty wygrywasz!');
             playerWins++;
         } else if (argComputerMove === argPlayerMove) {
@@ -29,12 +34,17 @@ function playGame(playerInput) {
             printMessage('Ja wygrywam!');
             computerWins++;
         }
-        round++;
-        document.getElementById('result').innerHTML = 'Gracz: ' + playerWins + ' vs ' + 'Komputer: ' + computerWins + '<br>' + 'Runda: ' + round;
+        rounds++;
+        computerWinsEffectiveness = Math.round((computerWins / playerWins) * 100);
+        document.getElementById('result').innerHTML = 'Gracz: ' + playerWins + ' vs ' + 'Komputer: ' + computerWins + '<br>' + 'Runda: ' + rounds + '<br>Wygrane rundy przez komputer: ' + computerWinsEffectiveness + '%';
     };
-    displayResult(computerMove, playerMove);
+    displayResult(computerMove(playerInput), playerMove);
 }
 
+for (let i = 0; i < 1000; i++) {
+    playGame(Math.floor(Math.random() * 3));
+}
+/*
 document.getElementById('play-rock').addEventListener('click', function () {
     playGame(0);
 });
@@ -43,4 +53,4 @@ document.getElementById('play-paper').addEventListener('click', function () {
 });
 document.getElementById('play-scissors').addEventListener('click', function () {
     playGame(2);
-});
+});*/
