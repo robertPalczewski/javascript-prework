@@ -1,3 +1,6 @@
+let computerWins = 0;
+let playerWins = 0;
+let round = 0;
 function playGame(playerInput) {
     clearMessages();
     const moveName = ['kamień', 'papier', 'nożyce'];
@@ -19,11 +22,15 @@ function playGame(playerInput) {
         printMessage('Twój ruch to: ' + argPlayerMove);
         if ((computerMove === moveName[0] && argPlayerMove === moveName[1]) || (argComputerMove === moveName[1] && argPlayerMove === moveName[2]) || (argComputerMove === moveName[2] && argPlayerMove === moveName[0])) {
             printMessage('Ty wygrywasz!');
+            playerWins++;
         } else if (argComputerMove === argPlayerMove) {
             printMessage('Mamy remis!');
         } else {
             printMessage('Ja wygrywam!');
+            computerWins++;
         }
+        round++;
+        document.getElementById('result').innerHTML = 'Gracz: ' + playerWins + ' vs ' + 'Komputer: ' + computerWins + '<br>' + 'Runda: ' + round;
     };
     displayResult(computerMove, playerMove);
 }

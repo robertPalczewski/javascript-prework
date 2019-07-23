@@ -15,4 +15,9 @@
     text-align: center;
     margin: auto;
 }
+
+/* line 13, sass/style.scss */
+.choice-button {
+    min-width: 100px;
+}
 /*# sourceMappingURL=style.css.map */
